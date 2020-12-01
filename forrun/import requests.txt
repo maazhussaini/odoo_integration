@@ -1,0 +1,18 @@
+import requests
+
+url = "https://forrun.co/api/v1/addnewOrder"
+
+payload = 'account_id=10011&api_token=7wJCDcI9K6xdq8je2wv5iUrHbVg6opKr85CkTmOJj4A03KIrcGPEPVQxB0iK&service_type=COD&
+pickup_name=Example%20Pickup%20name&pickup_phone=03453455052&pickup_address=II%20chundrigar%20rd.%20201&
+pickup_city=Karachi&delivery_name=Ahmed&delivery_phone=03453596052&delivery_city=Karachi&amount=1400&
+delivery_address=Nipa%20chawrangi%2C%20abc%20towers.&delivery_email=farhan.ahmadkhan@hotmail.com&
+reference_number=312&no_of_pieces=2&ensured_declared=&dimension_l=10&dimension_w=15&dimension_h=7&weight=2&
+item_detail=Dummy%20Item%20detail&item_type=other&instructions=dummy%20instructions&no_of_flyers=1&
+stock_items=bg%3D20%2Cpen%3D100'
+headers = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+}
+
+response = requests.request("POST", url, headers=headers, data = payload)
+
+print(response.text.encode('utf8'))
