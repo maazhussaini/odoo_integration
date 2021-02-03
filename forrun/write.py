@@ -2,8 +2,8 @@ from xmlrpc import client as xmlrpclib
 
 from requests import api
 
-url = 'http://165.22.15.64:8069'
-db = "ForrunDB"
+url = 'https://oddoapp.forrun.co'
+db = "Forrun_Test"
 username = 'farhan'
 password = 'ArpatecH157'
 
@@ -13,7 +13,9 @@ uid = common.login(db, username, password)
 
 def write_cn_number(sale_number, api_order):
     print(sale_number, api_order)
-    sale_order = models.execute_kw(db, uid, password, 'sale.order', 'write', [[sale_number], {
-        'x_cn_number': api_order
-    }])
-    print(sale_order)
+    if sale_number and api_order:
+        sale_order = models.execute_kw(db, uid, password, 'sale.order', 'write', [[sale_number], {
+            'x_cn_number': api_order
+        }])
+        print(sale_order)
+        return True
